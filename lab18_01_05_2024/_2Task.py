@@ -1,7 +1,6 @@
 import os
 import random
 
-
 def creatDir(dir): # function for create directory
     if not os.path.isdir(dir):
         os.mkdir(dir)
@@ -33,23 +32,25 @@ def getLinesFromFile(pathWithFileName): # if successful returned list lines
 
 def mainFunc(dir, fileName):
     creatDir(dir)
-    for i in range(10): # write data to file
-        writeLineToFile(str(random.randint(2,8)), os.path.join(dir, fileName))
+    for i in range(14): # write data to file
+        writeLineToFile(str(random.randint(1,10)), os.path.join(dir, fileName))
     listLines = getLinesFromFile(os.path.join(dir, fileName))
     counter = 0
+    multiplier = 1
+    description = ''
     for el in listLines:
         elInt =  int(el)
-        if elInt**2>25:
+        if elInt**2<16:
             counter = counter +1
-    print(f'From {len(listLines)} numbers {counter} numbers squared are more then 25')
+            multiplier = multiplier * elInt
+            if len(description)>0:
+                description = description + f'*{el}'
+            else:
+                description = description + f'{el}'
+    print(f'From {len(listLines)} numbers {counter} numbers squared are less then 16. And multiplier is {description} = {multiplier}')
 
 
-
-
-currentDirectory = os.getcwd() # get current directory
-directorySource = os.path.join(currentDirectory, 'source1') # directory for source file
-fileName = 'test1.txt'
-
-mainFunc(directorySource, fileName)
-
-
+currentDir = os.getcwd()
+dirSource = os.path.join(currentDir, 'source2')
+fileName = 'test2.txt'
+mainFunc(dirSource, fileName)
