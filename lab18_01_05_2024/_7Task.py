@@ -32,29 +32,30 @@ def getLinesFromFile(pathWithFileName): # if successful returned list lines
 
 def mainFunc(dir, fileName):
     creatDir(dir)
-    for i in range(15): # write data to file
-        writeLineToFile(str(random.randint(-5,5)), os.path.join(dir, fileName))
+    for i in range(13): # write data to file
+        writeLineToFile(str(random.randint(1,10)), os.path.join(dir, fileName))
     listLines = getLinesFromFile(os.path.join(dir, fileName))
     counter = 0
-    listAverageGeometricModul = []
+    arithmeticMean = 0
     description = ''
     for el in listLines:
-        elInt =  int(el)
-        if elInt<0:
+        elInt = int(el)
+        if (elInt%4==1) | (elInt%4==3):
             counter = counter + 1
-            listAverageGeometricModul.append(abs(elInt))
+            arithmeticMean = arithmeticMean + elInt
             if len(description) > 0:
-                description = description + f' *|{el}|'
+                description = description + f' +{el}'
             else:
-                description = description + f'|{el}|'
-    averageGeometricModul = 1
-    for i in listAverageGeometricModul:
-        averageGeometricModul = averageGeometricModul * i
-    averageGeometricModul = pow(averageGeometricModul, (1/counter))
-    print(f'From {len(listLines)} numbers {counter} are less then 0. And average geometric value to modul is {counter} root of({description}) = {averageGeometricModul}')
+                description = description + f'{el}'
+    if counter > 0:
+        arithmeticMean = arithmeticMean / counter
+        print(f'({description})/{counter}  = {arithmeticMean}')
+    else:
+        print('elements not found that meet the conditions')
+
 
 
 currentDir = os.getcwd()
-dirSource = os.path.join(currentDir, 'source4')
-fileName = 'test4.txt'
+dirSource = os.path.join(currentDir, 'source3')
+fileName = 'test3.txt'
 mainFunc(dirSource, fileName)

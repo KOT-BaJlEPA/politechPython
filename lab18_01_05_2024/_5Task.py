@@ -32,29 +32,29 @@ def getLinesFromFile(pathWithFileName): # if successful returned list lines
 
 def mainFunc(dir, fileName):
     creatDir(dir)
-    for i in range(15): # write data to file
-        writeLineToFile(str(random.randint(-5,5)), os.path.join(dir, fileName))
+    for i in range(12): # write data to file
+        writeLineToFile(str(random.randint(1,9)), os.path.join(dir, fileName))
     listLines = getLinesFromFile(os.path.join(dir, fileName))
     counter = 0
-    listAverageGeometricModul = []
+    listAverageGeometricSquareOdd = []
     description = ''
     for el in listLines:
         elInt =  int(el)
-        if elInt<0:
+        if elInt % 2 != 0:
             counter = counter + 1
-            listAverageGeometricModul.append(abs(elInt))
+            listAverageGeometricSquareOdd.append(elInt**2)
             if len(description) > 0:
-                description = description + f' *|{el}|'
+                description = description + f' *{el}\u00b2 '
             else:
-                description = description + f'|{el}|'
-    averageGeometricModul = 1
-    for i in listAverageGeometricModul:
-        averageGeometricModul = averageGeometricModul * i
-    averageGeometricModul = pow(averageGeometricModul, (1/counter))
-    print(f'From {len(listLines)} numbers {counter} are less then 0. And average geometric value to modul is {counter} root of({description}) = {averageGeometricModul}')
+                description = description + f'{el}\u00b2 '
+    averageGeometricSquareOdd = 1
+    for i in listAverageGeometricSquareOdd:
+        averageGeometricSquareOdd = averageGeometricSquareOdd * i
+    averageGeometricSquareOdd = pow(averageGeometricSquareOdd, (1/counter))
+    print(f'From {len(listLines)} numbers {counter} are odd numbers. And average geometric value to square is {counter} root of ({description}) = {averageGeometricSquareOdd}')
 
 
 currentDir = os.getcwd()
-dirSource = os.path.join(currentDir, 'source4')
-fileName = 'test4.txt'
+dirSource = os.path.join(currentDir, 'source5')
+fileName = 'test5.txt'
 mainFunc(dirSource, fileName)
