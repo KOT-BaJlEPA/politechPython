@@ -41,28 +41,15 @@ def mainFunc(dir, fileName):
         elInt =  int(el)
         if elInt**2>25:
             counter = counter +1
-<<<<<<< HEAD
     print(f'From {len(listLines)} numbers {counter} numbers squared are more then 25')
-=======
-    print(f'From {len(listLines)} numbers {counter} are more then 25')
->>>>>>> d52a1ff (fist)
 
 
 
 
 currentDirectory = os.getcwd() # get current directory
-<<<<<<< HEAD
 directorySource = os.path.join(currentDirectory, 'source1') # directory for source file
 fileName = 'test1.txt'
-
 mainFunc(directorySource, fileName)
-=======
-directorySource = os.path.join(currentDirectory, 'source') # directory for source file
 
-
-
-
-mainFunc(directorySource, 'test.txt')
->>>>>>> d52a1ff (fist)
 
 
