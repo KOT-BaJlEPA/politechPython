@@ -64,4 +64,8 @@ import datetime
 # monthly_report()
 
 date1 = datetime.date.today()
-print(date1.day)
+
+jh = date1.strftime("%Y-%m-%d")
+jh = jh.split("-")
+jh = jh[1]+ "." + jh[0]
+print(jh)
