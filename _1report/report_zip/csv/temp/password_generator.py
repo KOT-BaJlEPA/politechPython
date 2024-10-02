@@ -6,4 +6,7 @@ def generate_password(length):
     password = ''.join(random.choice(characters) for _ in range(length))
     return password
 
-print(generate_password(20))
+password = generate_password(21)
+print(password)
+print(password[:9])
+print(password[9:])
